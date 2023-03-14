@@ -1,0 +1,21 @@
+{% extends "register/layout.html" %}
+
+{% block title %}SignIn{% endblock %}
+
+{% block body %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+<strong>Message:</strong> {{ message }}
+<button type="button" class="close" data-dismiss="alert" aria-label="close"></button>
+<span aria-hidden="true">&times;</span> 
+</div>
+{% endfor %}
+<h1>Sign in</h1>
+<form action="{% url 'signin' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="username" id="username" placeholder="Username"><br>
+    <input type="password" name="password0" id="password0" placeholder="Password"><br>
+
+    <button type="submit">Login</button>
+</form>
+{% endblock %}
