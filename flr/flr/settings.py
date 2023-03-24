@@ -37,6 +37,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'chat',
+    'channels',
     'register',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -74,6 +76,7 @@ TEMPLATES = [
     },
 ]
 
+ASGI_APPLICATION = "flr.asgi.application"
 WSGI_APPLICATION = 'flr.wsgi.application'
 
 
@@ -128,3 +131,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CHANNEL_LAYERS = {
+    "default" : {
+        "BACKEND":"channels.layers.InMemoryChannelLayer"
+    }
+}
